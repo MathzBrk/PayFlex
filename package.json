@@ -1,0 +1,30 @@
+{
+  "name": "estagio",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon --watch src --ext ts,json --exec ts-node src/index.ts",
+    "start": "node dist/index.js",
+    "build": "tsc"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.3.0",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "estagio": "file:",
+    "express": "^4.21.2",
+    "mysql2": "^3.12.0",
+    "prisma": "^6.3.0",
+    "sequelize": "^6.37.5"
+  }
+}

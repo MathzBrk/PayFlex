@@ -1,0 +1,31 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                   String        @id @default(uuid())
+  fullName             String
+  email                String        @unique
+  password             String
+  isMerchant           Boolean       @default(false)
+  cpf                  String?       @unique
+  cnpj                 String?       @unique
+  balance              Float         @default(0.00)
+  transactionsSent     Transaction[] @relation("sentTransactions")
+  transactionsReceived Transaction[] @relation("receivedTransactions")
+}
+
+model Transaction {
+  id        Int      @id @default(autoincrement())
+  value     Float
+  payerId   String
+  payeeId   String
+  payer     User     @relation("sentTransactions", fields: [payerId], references: [id])
+  payee     User     @relation("receivedTransactions", fields: [payeeId], references: [id])
+  createdAt DateTime @default(now())
+}
