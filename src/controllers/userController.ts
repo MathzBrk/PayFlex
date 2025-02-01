@@ -1,5 +1,5 @@
-import { CreateUserDto } from "../domain/user/createUserDto";
-import { UserValidator } from "../domain/user/validador/userCreateValidador";
+import { CreateUserDto } from "../domain/user/dto/createUserDto";
+import { UserValidator } from "../domain/user/validator/userCreateValidador";
 import { UserRepository } from "../repositories/UserRepository";
 import { UserService } from "../services/UserService";
 import {Request, Response} from 'express';

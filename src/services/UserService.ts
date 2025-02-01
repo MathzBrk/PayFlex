@@ -1,6 +1,6 @@
 import { User } from '@prisma/client';
-import { CreateUserDto } from '../domain/user/createUserDto';
-import { UserValidator } from '../domain/user/validador/userCreateValidador';
+import { CreateUserDto } from '../domain/user/dto/createUserDto';
+import { UserValidator } from '../domain/user/validator/userCreateValidador';
 import { IUserRepository } from '../repositories/interfaces/IUserRepository';
 import { UserRepository } from '../repositories/UserRepository';
 
