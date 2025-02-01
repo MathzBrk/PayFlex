@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import { CreateUserDto } from "../createUserDto";
+import { CreateUserDto } from "../dto/createUserDto";
 import { IUserRepository } from "../../../repositories/interfaces/IUserRepository";
 import {DuplicateEmailError} from "../../../errors/DuplicateEmailError";
 import {DuplicateCpfCnpjError} from "../../../errors/DuplicateCpfCnpjError";
