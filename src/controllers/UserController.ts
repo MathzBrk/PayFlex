@@ -1,6 +1,4 @@
 import { CreateUserDto } from "../domain/user/dto/CreateUserDto";
-import { UserValidator } from "../domain/user/validator/UserCreateValidador";
-import { UserRepository } from "../repositories/UserRepository";
 import { UserService } from "../services/UserService";
 import {Request, Response} from 'express';
 
