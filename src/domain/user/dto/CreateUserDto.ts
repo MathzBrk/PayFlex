@@ -16,6 +16,7 @@ export class CreateUserDto {
 
     @IsNumber()
     @IsPositive()
+    @IsOptional()
     balance?: number;
 
     @IsBoolean()

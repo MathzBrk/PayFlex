@@ -25,7 +25,6 @@ export class TransactionService {
         this.validator = new DtoValidator();
     }
 
-
     public executeTransaction = async(transactionDto: CreateTransactionDto): Promise<Transaction> => {
         try{
             const createTransactionDto = plainToInstance(CreateTransactionDto,transactionDto);
