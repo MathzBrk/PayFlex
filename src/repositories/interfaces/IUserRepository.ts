@@ -1,9 +1,10 @@
-import { User } from "@prisma/client";
+import {DocType, User} from "@prisma/client";
 import { CreateUserDto } from "../../domain/user/dto/createUserDto";
 
 export interface IUserRepository {
-    findFirst(userDto: CreateUserDto): Promise<User | null>;
-    create(userDto: CreateUserDto): Promise<User>;
+    findFirst(userDto: CreateUserDto, formattedDocument: string): Promise<User | null>;
+
+    create(userDto: CreateUserDto, formattedDocument: string, doctype: DocType): Promise<User>;
     findByEmail(email: string): Promise<User | null>;
     findById(id: string): Promise<User | null>;
 }
