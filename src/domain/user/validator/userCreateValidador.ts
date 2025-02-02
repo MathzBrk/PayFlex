@@ -4,7 +4,9 @@ import { IUserRepository } from "../../../repositories/interfaces/IUserRepositor
 import {DuplicateEmailError} from "../../../errors/DuplicateEmailError";
 import {DuplicateCpfCnpjError} from "../../../errors/DuplicateCpfCnpjError";
 import {DocumentIsRequired} from "../../../errors/DocumentIsRequired";
-import {DocumentIsNotRequired} from "../../../errors/DocumentIsNotRequired";
+import { CPF, CNPJ } from '@julioakira/cpf-cnpj-utils'
+import {InsufficientBalanceError} from "../../../errors/InsufficientBalanceError";
+
 
 export class UserValidator {
 
@@ -14,25 +16,13 @@ export class UserValidator {
         this.userRepository =  userRepository;
     }
 
-    validate = async (userDto: CreateUserDto) => {
+    validate = async (userDto: CreateUserDto, formattedDocument: string) => {
 
-        if (userDto.isMerchant) {
-            if (!userDto.cnpj) {
-                throw new DocumentIsRequired("CNPJ is required to create a merchant");
-            }
-            if (userDto.cpf) {
-                throw new DocumentIsNotRequired("A merchant can't have CPF");
-            }
-        } else {
-            if (!userDto.cpf) {
-                throw new DocumentIsRequired("CPF is required to create a normal user");
-            }
-            if (userDto.cnpj) {
-                throw new DocumentIsNotRequired("A normal user can't have CNPJ");
-            }
+        if ((userDto.balance ?? 0) < 0) {
+            throw new InsufficientBalanceError("Balance can't be less than 0");
         }
 
-        const existingUser = await this.userRepository.findFirst(userDto);
+        const existingUser = await this.userRepository.findFirst(userDto, formattedDocument);
 
         if(existingUser === null) {
             return;
@@ -41,7 +31,9 @@ export class UserValidator {
                 throw new DuplicateEmailError("There is already a user with this email");
             }
 
-            if(existingUser.cpf === userDto.cpf || existingUser.cnpj === userDto.cnpj){
+            console.log(existingUser)
+
+            if(existingUser.document === formattedDocument){
                 throw new DuplicateCpfCnpjError("There is already a user with this cpf/cnpj");
             }
         }

@@ -22,16 +22,10 @@ export class CreateUserDto {
     @IsNotEmpty()
     isMerchant!: boolean;
 
-    @ValidateIf(u => !u.isMerchant)
     @IsString()
     @IsNotEmpty()
-    cpf?: never;
+    document!: string;
 
-
-    @ValidateIf(u => u.isMerchant)
-    @IsString()
-    @IsNotEmpty()
-    cnpj?: string;
 
 
 }

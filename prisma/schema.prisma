@@ -13,8 +13,8 @@ model User {
   email                String        @unique
   password             String
   isMerchant           Boolean       @default(false)
-  cpf                  String?       @unique
-  cnpj                 String?       @unique
+  document             String        @unique
+  documentType         DocType       @default(CPF)
   balance              Float         @default(0.00)
   transactionsSent     Transaction[] @relation("sentTransactions")
   transactionsReceived Transaction[] @relation("receivedTransactions")
@@ -28,4 +28,9 @@ model Transaction {
   payer     User     @relation("sentTransactions", fields: [payerId], references: [id])
   payee     User     @relation("receivedTransactions", fields: [payeeId], references: [id])
   createdAt DateTime @default(now())
+}
+
+enum DocType {
+  CPF
+  CNPJ
 }
