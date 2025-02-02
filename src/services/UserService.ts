@@ -21,7 +21,7 @@ export class UserService {
 
     constructor(){
         this.userRepository = new UserRepository();
-        this.validator = new UserValidator(this.userRepository);
+        this.validator = new UserValidator();
     }
 
     async createUser(userDto: CreateUserDto): Promise<UserResponseDto | null>{
