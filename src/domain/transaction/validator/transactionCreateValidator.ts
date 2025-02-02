@@ -15,14 +15,14 @@ export class TransactionCreateValidator {
 
         if(payer === null){
             throw new PartiesInvolvedNotFound(`Payer with id '${transactionDto.payer}' not found`);
-        }
+        } else{
+            if(payer.isMerchant){
+                throw new PayerIsAMerchantError("Merchants can't send money");
+            }
 
-        if(payer.isMerchant){
-            throw new PayerIsAMerchantError("Merchants can't send money");
-        }
-
-        if(payer.balance < transactionDto.value){
-            throw new InsufficientBalanceError("Payer doesn't have sufficient balance for this transaction");
+            if(payer.balance < transactionDto.value){
+                throw new InsufficientBalanceError("Payer doesn't have sufficient balance for this transaction");
+            }
         }
 
         if(payee === null){
