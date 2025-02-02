@@ -6,7 +6,6 @@ import * as console from "node:console";
 import axios from "axios";
 import {DtoValidator} from "../utils/dto-validator";
 import {plainToInstance} from "class-transformer";
-import {IUserValidator} from "../domain/user/validator/interface/IUserValidator";
 import {ITransactionValidator} from "../domain/transaction/validator/interface/itransaction.validator";
 import {PayeeValidator} from "../domain/transaction/validator/payee-validator";
 import {PayerValidator} from "../domain/transaction/validator/payer-validator";
@@ -24,7 +23,6 @@ export class TransactionService {
         this.userRepository = new UserRepository();
         this.validator = new DtoValidator();
     }
-
 
     public executeTransaction = async(transactionDto: CreateTransactionDto): Promise<Transaction> => {
         try{
