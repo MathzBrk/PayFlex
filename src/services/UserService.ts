@@ -1,4 +1,4 @@
-import {DocType, User} from '@prisma/client';
+import {DocType} from '@prisma/client';
 import {CreateUserDto} from '../domain/user/dto/CreateUserDto';
 import {IUserRepository} from '../repositories/interfaces/IUserRepository';
 import {UserRepository} from '../repositories/UserRepository';
@@ -13,7 +13,7 @@ import {TypeErrorDocument} from "../errors/TypeErrorDocument";
 import {UserResponseDto} from "../domain/user/dto/UserResponseDto";
 import {DtoValidator} from "../utils/dto-validator";
 import {plainToInstance} from "class-transformer";
-import {CreateTransactionDto} from "../domain/transaction/dto/createTransactionDto";
+
 
 
 export class UserService {
