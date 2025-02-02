@@ -23,9 +23,12 @@ export class TransactionService {
 
     executeTransaction = async(transactionDto: CreateTransactionDto): Promise<Transaction> => {
         try{
+
             await this.transactionValidator.validate(transactionDto);
+            console.log("Transaction dto validated.");
 
             const isAuthorized = await this.authorizeTransaction();
+
             if(!isAuthorized){
                 throw new Error("Unauthorized transaction");
             }
