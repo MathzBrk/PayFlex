@@ -18,8 +18,8 @@ async function startServer() {
   await connectToDatabase();
 
   addMiddlewares(app);
-  app.use('/api', userRouter);
-  app.use('/api', transactionRoutes)
+  app.use('/api/users', userRouter);
+  app.use('/api/transactions', transactionRoutes)
 
   app.get('/', (req, res) => {
     res.send('Servidor funcionando na porta 8082!');
@@ -32,4 +32,4 @@ async function startServer() {
   
 }
 
-startServer().catch(console.error);
+startServer();

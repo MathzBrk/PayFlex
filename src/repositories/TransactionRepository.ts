@@ -6,7 +6,7 @@ import prisma from "../database/prismaClient";
 export class TransactionRepository implements ITransactionRepository{
     private prisma: PrismaClient = prisma;
 
-    createTransaction = async (createTransactionDto: CreateTransactionDto): Promise<Transaction> => {
+    public createTransaction = async (createTransactionDto: CreateTransactionDto): Promise<Transaction> => {
          return this.prisma.$transaction(async (trx) => {
 
              await trx.user.update({
@@ -30,8 +30,25 @@ export class TransactionRepository implements ITransactionRepository{
                      }
                  }
              });
+         });
+    }
 
-         })
+    public getAllTransactions = async (): Promise<Transaction[]> => {
+        return this.prisma.transaction.findMany();
+    }
+
+    public getTransactionsByTime = async(seconds: number): Promise<Transaction[]> => {
+        const timeLimit = new Date();
+        timeLimit.setSeconds(timeLimit.getSeconds() - seconds);
+
+        return this.prisma.transaction.findMany({
+            where: {
+                createdAt: {gte: timeLimit},
+            },
+            orderBy: {
+                createdAt: "desc",
+            },
+        });
     }
 
 

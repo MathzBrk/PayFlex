@@ -24,4 +24,25 @@ export class TransactionController {
         }
     }
 
+    public async getAllTransactions(req: Request, res: Response){
+        console.log("Request received to get all transactions");
+        try{
+            const transactions = await this.service.getAllTransactions();
+            res.status(200).json(transactions);
+        } catch (error: any){
+            return res.status(400).json({ error: error.message });
+        }
+    }
+
+    public async getTransactionsByTime(req: Request, res: Response){
+        console.log("Request received to get all transactions by time");
+        try {
+            const seconds = req.query.seconds ? parseInt(req.query.seconds as string, 10) : 60;
+            const transactions = await this.service.getTransactionsBytime(seconds);
+            res.status(200).json(transactions);
+        } catch (error: any){
+            return res.status(400).json({ error: error.message });
+        }
+    }
+
 }
