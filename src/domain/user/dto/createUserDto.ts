@@ -25,7 +25,8 @@ export class CreateUserDto {
     @ValidateIf(u => !u.isMerchant)
     @IsString()
     @IsNotEmpty()
-    cpf?: string;
+    cpf?: never;
+
 
     @ValidateIf(u => u.isMerchant)
     @IsString()
