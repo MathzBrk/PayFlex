@@ -3,4 +3,6 @@ import { CreateTransactionDto } from "../../domain/transaction/dto/createTransac
 
 export interface ITransactionRepository{
     createTransaction(transactionDto: CreateTransactionDto): Promise<Transaction>;
+    getAllTransactions(): Promise<Transaction[]>;
+    getTransactionsByTime(seconds: number): Promise<Transaction[]>;
 }
