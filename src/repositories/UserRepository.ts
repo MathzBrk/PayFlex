@@ -1,7 +1,8 @@
 import {DocType, Prisma, PrismaClient, User} from "@prisma/client";
 import { IUserRepository } from "./interfaces/IUserRepository";
-import { CreateUserDto } from "../domain/user/dto/createUserDto";
+import { CreateUserDto } from "../domain/user/dto/CreateUserDto";
 import prisma from "../database/prismaClient";
+import {UserResponseDto} from "../domain/user/dto/UserResponseDto";
 
 export class UserRepository implements IUserRepository {
 
@@ -18,12 +19,19 @@ export class UserRepository implements IUserRepository {
         });
     };
 
-   create = async (userDto: CreateUserDto, formattedDocument: string, doctype: DocType):Promise<User> => {
+   create = async (userDto: CreateUserDto, formattedDocument: string, doctype: DocType):Promise<UserResponseDto> => {
     return this.prisma.user.create({
         data: {
             ...userDto,
             document: formattedDocument,
             documentType: doctype
+        },
+        select: {
+            fullName: true,
+            email: true,
+            isMerchant: true,
+            document: true,
+            documentType: true
         }
     });
    };
