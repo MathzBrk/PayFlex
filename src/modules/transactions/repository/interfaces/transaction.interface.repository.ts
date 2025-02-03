@@ -1,5 +1,5 @@
 import { Transaction } from "@prisma/client";
-import { CreateTransactionDto } from "../../domain/transaction/dto/create-transaction.dto";
+import { CreateTransactionDto } from "../../dtos/create-transaction.dto";
 
 export interface TransactionInterfaceRepository {
     createTransaction(transactionDto: CreateTransactionDto): Promise<Transaction>;

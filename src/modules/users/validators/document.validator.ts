@@ -1,6 +1,6 @@
 import {UserInterfaceValidator} from "./interface/user.interface.validator";
-import {CreateUserDto} from "../dto/create-user.dto";
-import {UserInterfaceRepository} from "../../../repositories/interfaces/user.interface.repository";
+import {CreateUserDto} from "../dtos/create-user.dto";
+import {UserInterfaceRepository} from "../repository/interfaces/user.interface.repository";
 import {DuplicateCpfCnpjError} from "../../../errors/duplicate-cpf-cnpj.error";
 
 export class DocumentValidator implements UserInterfaceValidator {

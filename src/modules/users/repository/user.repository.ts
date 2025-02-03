@@ -1,8 +1,8 @@
 import {DocType, Prisma, PrismaClient, User} from "@prisma/client";
 import { UserInterfaceRepository } from "./interfaces/user.interface.repository";
-import { CreateUserDto } from "../domain/user/dto/create-user.dto";
-import prisma from "../database/prisma-client";
-import {UserResponseDto} from "../domain/user/dto/user-response.dto";
+import { CreateUserDto } from "../dtos/create-user.dto";
+import prisma from "../../../database/prisma-client";
+import {UserResponseDto} from "../dtos/user-response.dto";
 
 export class UserRepository implements UserInterfaceRepository {
 

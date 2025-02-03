@@ -1,6 +1,6 @@
 import {DocType, User} from "@prisma/client";
-import { CreateUserDto } from "../../domain/user/dto/create-user.dto";
-import {UserResponseDto} from "../../domain/user/dto/user-response.dto";
+import { CreateUserDto } from "../../dtos/create-user.dto";
+import {UserResponseDto} from "../../dtos/user-response.dto";
 
 export interface UserInterfaceRepository {
     findFirst(userDto: CreateUserDto, formattedDocument: string): Promise<User | null>;

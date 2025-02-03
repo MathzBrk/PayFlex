@@ -1,18 +1,18 @@
 import {DocType} from '@prisma/client';
-import {CreateUserDto} from '../domain/user/dto/create-user.dto';
-import {UserInterfaceRepository} from '../repositories/interfaces/user.interface.repository';
-import {UserRepository} from '../repositories/user.repository';
+import {CreateUserDto} from '../dtos/create-user.dto';
+import {UserInterfaceRepository} from '../repository/interfaces/user.interface.repository';
+import {UserRepository} from '../repository/user.repository';
 import {cnpj, cpf} from "cpf-cnpj-validator";
 import {User} from "@prisma/client";
 
-import {DocumentIsRequiredError} from "../errors/document-is-required.error";
-import {UserInterfaceValidator} from "../domain/user/validator/interface/user.interface.validator";
-import {DocumentValidator} from "../domain/user/validator/document.validator";
-import {EmailValidator} from "../domain/user/validator/email.validator";
+import {DocumentIsRequiredError} from "../../../errors/document-is-required.error";
+import {UserInterfaceValidator} from "../validators/interface/user.interface.validator";
+import {DocumentValidator} from "../validators/document.validator";
+import {EmailValidator} from "../validators/email.validator";
 import bcrypt from "bcrypt";
-import {TypeErrorDocument} from "../errors/type-error-document";
-import {UserResponseDto} from "../domain/user/dto/user-response.dto";
-import {DtoValidator} from "../utils/dto.validator";
+import {TypeErrorDocument} from "../../../errors/type-error-document";
+import {UserResponseDto} from "../dtos/user-response.dto";
+import {DtoValidator} from "../../../utils/dto.validator";
 import {plainToInstance} from "class-transformer";
 
 

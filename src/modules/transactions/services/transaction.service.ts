@@ -1,14 +1,14 @@
 import { Transaction } from "@prisma/client";
-import { CreateTransactionDto } from "../domain/transaction/dto/create-transaction.dto";
-import { TransactionRepository } from "../repositories/transaction.repository";
-import {UserRepository} from "../repositories/user.repository";
+import { CreateTransactionDto } from "../dtos/create-transaction.dto";
+import { TransactionRepository } from "../repository/transaction.repository";
+import {UserRepository} from "../../users/repository/user.repository";
 import * as console from "node:console";
 import axios from "axios";
-import {DtoValidator} from "../utils/dto.validator";
+import {DtoValidator} from "../../../utils/dto.validator";
 import {plainToInstance} from "class-transformer";
-import {TransactionInterfaceValidator} from "../domain/transaction/validator/interface/transaction.interface.validator";
-import {PayeeValidator} from "../domain/transaction/validator/payee-validator";
-import {PayerValidator} from "../domain/transaction/validator/payer-validator";
+import {TransactionInterfaceValidator} from "../validators/interface/transaction.interface.validator";
+import {PayeeValidator} from "../validators/payee-validator";
+import {PayerValidator} from "../validators/payer-validator";
 
 export class TransactionService {
 

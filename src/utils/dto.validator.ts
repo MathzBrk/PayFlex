@@ -1,11 +1,11 @@
 import { PrismaClient } from "@prisma/client";
-import { CreateUserDto } from "../domain/user/dto/create-user.dto";
-import { UserInterfaceRepository } from "../repositories/interfaces/user.interface.repository";
+import { CreateUserDto } from "../modules/users/dtos/create-user.dto";
+import { UserInterfaceRepository } from "../modules/users/repository/interfaces/user.interface.repository";
 import {DuplicateEmailError} from "../errors/duplicate-email.error";
 import {DuplicateCpfCnpjError} from "../errors/duplicate-cpf-cnpj.error";
 import {InsufficienttBalanceError} from "../errors/insufficientt-balance.error";
 import {plainToInstance} from "class-transformer";
-import {CreateTransactionDto} from "../domain/transaction/dto/create-transaction.dto";
+import {CreateTransactionDto} from "../modules/transactions/dtos/create-transaction.dto";
 import {JsonInputError} from "../errors/json-input.error";
 import {validate, ValidationError} from "class-validator";
 

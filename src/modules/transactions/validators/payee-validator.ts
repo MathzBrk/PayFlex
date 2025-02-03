@@ -1,6 +1,6 @@
 import {TransactionInterfaceValidator} from "./interface/transaction.interface.validator";
-import {CreateTransactionDto} from "../dto/create-transaction.dto";
-import {UserInterfaceRepository} from "../../../repositories/interfaces/user.interface.repository";
+import {CreateTransactionDto} from "../dtos/create-transaction.dto";
+import {UserInterfaceRepository} from "../../users/repository/interfaces/user.interface.repository";
 import {PartiesInvolvedNotFoundError} from "../../../errors/parties-involved-not-found.error";
 
 export class PayeeValidator implements TransactionInterfaceValidator{

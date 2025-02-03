@@ -1,5 +1,5 @@
-import { CreateUserDto } from "../domain/user/dto/create-user.dto";
-import { UserService } from "../services/user.service";
+import { CreateUserDto } from "../../dtos/create-user.dto";
+import { UserService } from "../../service/user.service";
 import {Request, Response} from 'express';
 
 export class UserController {

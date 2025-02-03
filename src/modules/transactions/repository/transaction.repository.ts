@@ -1,7 +1,7 @@
 import { PrismaClient, Transaction } from "@prisma/client";
-import { CreateTransactionDto } from "../domain/transaction/dto/create-transaction.dto";
+import { CreateTransactionDto } from "../dtos/create-transaction.dto";
 import { TransactionInterfaceRepository } from "./interfaces/transaction.interface.repository";
-import prisma from "../database/prisma-client";
+import prisma from "../../../database/prisma-client";
 
 export class TransactionRepository implements TransactionInterfaceRepository{
     private prisma: PrismaClient = prisma;

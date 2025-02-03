@@ -2,8 +2,8 @@ import express, { Application } from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import { connectToDatabase } from './database/database-connection';
-import userRouter from './routes/user.routes';
-import transactionRoutes from "./routes/transaction.routes";
+import userRouter from './modules/users/infra/routes/user.routes';
+import transactionRoutes from "./modules/transactions/infra/routes/transaction.routes";
 import * as dotenv from 'dotenv';
 import setupSwagger from "./config/swagger";
 

@@ -1,4 +1,4 @@
-import {StatsService} from "../services/stats-service";
+import {StatsService} from "../../services/stats-service";
 import {Request, Response} from "express";
 
 
