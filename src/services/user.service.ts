@@ -6,13 +6,13 @@ import {cnpj, cpf} from "cpf-cnpj-validator";
 import {User} from "@prisma/client";
 
 import {DocumentIsRequiredError} from "../errors/document-is-required.error";
-import {UserValidatorInterface} from "../domain/user/validator/interface/user-validator.interface";
+import {UserInterfaceValidator} from "../domain/user/validator/interface/user.interface.validator";
 import {DocumentValidator} from "../domain/user/validator/document.validator";
 import {EmailValidator} from "../domain/user/validator/email.validator";
 import bcrypt from "bcrypt";
 import {TypeErrorDocument} from "../errors/type-error-document";
 import {UserResponseDto} from "../domain/user/dto/user-response.dto";
-import {DtoValidator} from "../utils/dto-validator";
+import {DtoValidator} from "../utils/dto.validator";
 import {plainToInstance} from "class-transformer";
 
 
@@ -35,7 +35,7 @@ export class UserService {
             const documentType = this.determineDocument(createUserDto.document, createUserDto.isMerchant);
             const formattedDocument = this.formatDocument(createUserDto.document, documentType);
 
-            const businessRuleValidators: UserValidatorInterface[] = [
+            const businessRuleValidators: UserInterfaceValidator[] = [
                 new DocumentValidator(this.userRepository,formattedDocument),
                 new EmailValidator(this.userRepository)
             ];

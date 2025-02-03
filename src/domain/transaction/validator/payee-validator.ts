@@ -1,9 +1,9 @@
-import {ITransactionValidator} from "./interface/itransaction.validator";
-import {CreateTransactionDto} from "../dto/createTransactionDto";
+import {TransactionInterfaceValidator} from "./interface/transaction.interface.validator";
+import {CreateTransactionDto} from "../dto/create-transaction.dto";
 import {UserInterfaceRepository} from "../../../repositories/interfaces/user.interface.repository";
 import {PartiesInvolvedNotFoundError} from "../../../errors/parties-involved-not-found.error";
 
-export class PayeeValidator implements ITransactionValidator{
+export class PayeeValidator implements TransactionInterfaceValidator{
 
     constructor(private userRepository: UserInterfaceRepository){}
 

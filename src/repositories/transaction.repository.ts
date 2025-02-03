@@ -1,9 +1,9 @@
 import { PrismaClient, Transaction } from "@prisma/client";
-import { CreateTransactionDto } from "../domain/transaction/dto/createTransactionDto";
-import { ITransactionRepository } from "./interfaces/ITransactionRepository";
-import prisma from "../database/prismaClient";
+import { CreateTransactionDto } from "../domain/transaction/dto/create-transaction.dto";
+import { TransactionInterfaceRepository } from "./interfaces/transaction.interface.repository";
+import prisma from "../database/prisma-client";
 
-export class TransactionRepository implements ITransactionRepository{
+export class TransactionRepository implements TransactionInterfaceRepository{
     private prisma: PrismaClient = prisma;
 
     public createTransaction = async (createTransactionDto: CreateTransactionDto): Promise<Transaction> => {

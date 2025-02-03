@@ -1,5 +1,5 @@
 
-import prisma from '../database/prismaClient';
+import prisma from './prisma-client';
 
 export async function connectToDatabase() {
   try {
