@@ -12,6 +12,8 @@ const statsController = new StatsController();
  * /transactions/transfer:
  *   post:
  *     summary: Realiza uma transferência entre usuários
+ *     tags:
+ *      - Transaction
  *     description: Endpoint para a realização de uma transferência de um valor entre um pagador (payer) e um recebedor (payee).
  *     requestBody:
  *       required: true
@@ -59,6 +61,8 @@ router.post('/transactions/transfer', transactionController.executeTransaction.b
  * /transactions:
  *   get:
  *     summary: Recupera todas as transações
+ *     tags:
+ *      - Transaction
  *     description: Endpoint para obter todas as transações registradas no banco de dados.
  *     responses:
  *       200:
@@ -96,6 +100,8 @@ router.get('/transactions', transactionController.getAllTransactions.bind(transa
  * /transactions/time:
  *   get:
  *     summary: Obtém transações por período de tempo
+ *     tags:
+ *      - Transaction
  *     description: Retorna todas as transações que ocorreram em um determinado período de tempo.
  *                  Você pode passar um parâmetro de query `seconds` para definir o período (em segundos).
  *                  Se nenhum parâmetro for informado, o valor padrão é 60 segundos.
@@ -144,6 +150,8 @@ router.get('/transactions/time', transactionController.getTransactionsByTime.bin
  * /transactions/stats/time:
  *   get:
  *     summary: Retorna estatísticas das transações em um intervalo de tempo
+ *     tags:
+ *      - Stats
  *     description: Esse endpoint retorna as estatísticas (count, sum, min, max, avg) das transações que ocorreram em um determinado intervalo de tempo.
  *                  O intervalo (em segundos) pode ser informado via parâmetro de query `seconds`. Se não for informado, o valor padrão é 60 segundos.
  *     parameters:

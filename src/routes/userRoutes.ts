@@ -9,6 +9,8 @@ const userController = new UserController();
  * /users:
  *   post:
  *     summary: Cria um novo usuário
+ *     tags:
+ *      - User
  *     description: Cadastro de um novo usuário. Envia os dados do usuário para cadastro.
  *     requestBody:
  *       required: true
