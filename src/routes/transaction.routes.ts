@@ -1,6 +1,6 @@
 import { Router } from "express";
-import {TransactionController} from "../controllers/TransactionController";
-import {StatsController} from "../controllers/stats-controller";
+import {TransactionController} from "../controllers/transaction.controller";
+import {StatsController} from "../controllers/stats.controller";
 
 const router = Router();
 const transactionController = new TransactionController();

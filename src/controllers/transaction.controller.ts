@@ -1,6 +1,6 @@
-import {TransactionService} from "../services/TransactionService";
+import {TransactionService} from "../services/transaction.service";
 import {Transaction} from "@prisma/client";
-import {CreateTransactionDto} from "../domain/transaction/dto/createTransactionDto";
+import {CreateTransactionDto} from "../domain/transaction/dto/create-transaction.dto";
 import {Request, Response} from 'express';
 
 

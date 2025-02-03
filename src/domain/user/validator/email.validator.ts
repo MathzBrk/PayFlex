@@ -1,10 +1,10 @@
-import {UserValidatorInterface} from "./interface/user-validator.interface";
+import {UserInterfaceValidator} from "./interface/user.interface.validator";
 import {CreateUserDto} from "../dto/create-user.dto";
 import {DuplicateCpfCnpjError} from "../../../errors/duplicate-cpf-cnpj.error";
 import {UserInterfaceRepository} from "../../../repositories/interfaces/user.interface.repository";
 import {DuplicateEmailError} from "../../../errors/duplicate-email.error";
 
-export class EmailValidator implements UserValidatorInterface{
+export class EmailValidator implements UserInterfaceValidator{
 
     constructor(private userRepository: UserInterfaceRepository){}
 

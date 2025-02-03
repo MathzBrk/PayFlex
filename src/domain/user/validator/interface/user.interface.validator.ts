@@ -1,5 +1,5 @@
 import {CreateUserDto} from "../../dto/create-user.dto";
 
-export interface UserValidatorInterface {
+export interface UserInterfaceValidator {
     validate(userDto: CreateUserDto): Promise<void>;
 }

@@ -1,12 +1,12 @@
 
-import {ITransactionValidator} from "./interface/itransaction.validator";
-import {CreateTransactionDto} from "../dto/createTransactionDto";
+import {TransactionInterfaceValidator} from "./interface/transaction.interface.validator";
+import {CreateTransactionDto} from "../dto/create-transaction.dto";
 import {PartiesInvolvedNotFoundError} from "../../../errors/parties-involved-not-found.error";
 import {PayerIsAMerchantError} from "../../../errors/payer-is-a-merchant.error";
 import {InsufficienttBalanceError} from "../../../errors/insufficientt-balance.error";
 import {UserInterfaceRepository} from "../../../repositories/interfaces/user.interface.repository";
 
-export class PayerValidator implements ITransactionValidator {
+export class PayerValidator implements TransactionInterfaceValidator {
 
     constructor(private userRepository: UserInterfaceRepository) {
     }

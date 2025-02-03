@@ -1,4 +1,4 @@
-import {TransactionRepository} from "../repositories/TransactionRepository";
+import {TransactionRepository} from "../repositories/transaction.repository";
 import {TransactionStats} from "../domain/transaction/dto/transaction-stats.dto";
 import {Transaction} from "@prisma/client";
 import * as stats from 'stats-lite';

@@ -1,9 +1,9 @@
-import {UserValidatorInterface} from "./interface/user-validator.interface";
+import {UserInterfaceValidator} from "./interface/user.interface.validator";
 import {CreateUserDto} from "../dto/create-user.dto";
 import {UserInterfaceRepository} from "../../../repositories/interfaces/user.interface.repository";
 import {DuplicateCpfCnpjError} from "../../../errors/duplicate-cpf-cnpj.error";
 
-export class DocumentValidator implements UserValidatorInterface {
+export class DocumentValidator implements UserInterfaceValidator {
     constructor(private userRepository: UserInterfaceRepository, private formattedDocument: string) {}
 
     async validate(userDto: CreateUserDto): Promise<void> {
