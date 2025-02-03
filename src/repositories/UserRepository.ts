@@ -27,6 +27,7 @@ export class UserRepository implements IUserRepository {
             documentType: doctype
         },
         select: {
+            id: true,
             fullName: true,
             email: true,
             isMerchant: true,

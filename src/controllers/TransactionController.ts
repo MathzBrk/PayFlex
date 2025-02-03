@@ -18,7 +18,7 @@ export class TransactionController {
             const transactionDto: CreateTransactionDto = req.body;
             const newTransaction = await this.service.executeTransaction(transactionDto);
             console.log("New transaction created:", newTransaction);
-            res.status(201).json(newTransaction);
+            res.status(201).json("Transfer completed successfully.");
         } catch (error: any){
             return res.status(400).json({ error: error.message });
         }
