@@ -4,6 +4,10 @@ import bodyParser from 'body-parser';
 import { connectToDatabase } from './database/databaseConnection';
 import userRouter from './routes/userRoutes';
 import transactionRoutes from "./routes/transactionRoutes";
+import * as dotenv from 'dotenv';
+import setupSwagger from "./config/swagger";
+
+dotenv.config();
 
 const addMiddlewares = (app: Application) => {
   app.use(cors());
@@ -18,8 +22,10 @@ async function startServer() {
   await connectToDatabase();
 
   addMiddlewares(app);
-  app.use('/api/users', userRouter);
-  app.use('/api/transactions', transactionRoutes)
+  setupSwagger(app);
+
+  app.use('/', userRouter);
+  app.use('/', transactionRoutes)
 
   app.get('/', (req, res) => {
     res.send('Servidor funcionando na porta 8082!');
