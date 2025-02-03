@@ -1,21 +1,21 @@
 
 import {ITransactionValidator} from "./interface/itransaction.validator";
 import {CreateTransactionDto} from "../dto/createTransactionDto";
-import {PartiesInvolvedNotFound} from "../../../errors/PartiesInvolvedNotFound";
-import {PayerIsAMerchantError} from "../../../errors/PayerIsAMerchantError";
-import {InsufficientBalanceError} from "../../../errors/InsufficientBalanceError";
-import {IUserRepository} from "../../../repositories/interfaces/IUserRepository";
+import {PartiesInvolvedNotFoundError} from "../../../errors/parties-involved-not-found.error";
+import {PayerIsAMerchantError} from "../../../errors/payer-is-a-merchant.error";
+import {InsufficienttBalanceError} from "../../../errors/insufficientt-balance.error";
+import {UserInterfaceRepository} from "../../../repositories/interfaces/user.interface.repository";
 
 export class PayerValidator implements ITransactionValidator {
 
-    constructor(private userRepository: IUserRepository) {
+    constructor(private userRepository: UserInterfaceRepository) {
     }
 
     async validate(transactionDto: CreateTransactionDto): Promise<void> {
         const payer = await this.userRepository.findById(transactionDto.payer);
 
         if(payer === null){
-            throw new PartiesInvolvedNotFound(`Payer with id '${transactionDto.payer}' not found`);
+            throw new PartiesInvolvedNotFoundError(`Payer with id '${transactionDto.payer}' not found`);
         } else{
 
             if(payer.isMerchant){
@@ -23,7 +23,7 @@ export class PayerValidator implements ITransactionValidator {
             }
 
             if(payer.balance < transactionDto.value){
-                throw new InsufficientBalanceError("Payer doesn't have sufficient balance for this transaction");
+                throw new InsufficienttBalanceError("Payer doesn't have sufficient balance for this transaction");
             }
         }
 

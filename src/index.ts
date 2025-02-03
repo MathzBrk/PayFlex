@@ -2,7 +2,7 @@ import express, { Application } from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import { connectToDatabase } from './database/databaseConnection';
-import userRouter from './routes/userRoutes';
+import userRouter from './routes/user.routes';
 import transactionRoutes from "./routes/transactionRoutes";
 import * as dotenv from 'dotenv';
 import setupSwagger from "./config/swagger";
@@ -28,14 +28,14 @@ async function startServer() {
   app.use('/', transactionRoutes)
 
   app.get('/', (req, res) => {
-    res.send('Servidor funcionando na porta 8082!');
+    res.send(`Server running on port ${port}`);
   });
 
   app.listen(port, () => {
-    console.log(`🚀 Servidor escutando na porta ${port}`);
+    console.log(`🚀 Server listening on port ${port}`);
+    console.log(`📖 Swagger docs available at http://localhost:${port}/api/v1/docs/`);
   });
 
-  
 }
 
 startServer();

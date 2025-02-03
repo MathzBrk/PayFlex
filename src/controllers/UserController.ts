@@ -1,5 +1,5 @@
-import { CreateUserDto } from "../domain/user/dto/CreateUserDto";
-import { UserService } from "../services/UserService";
+import { CreateUserDto } from "../domain/user/dto/create-user.dto";
+import { UserService } from "../services/user.service";
 import {Request, Response} from 'express';
 
 export class UserController {
@@ -21,6 +21,16 @@ export class UserController {
     } catch(error: any){
         return res.status(400).json({ error: error.message });
     }
+   }
+
+   public async findAll(req: Request, res: Response){
+        console.log("Request received to get all users");
+        try{
+            const users = await this.userService.findAllUsers();
+            res.status(200).json(users);
+        } catch(error: any){
+            return res.status(500).json({ error: error.message });
+        }
    }
 
 

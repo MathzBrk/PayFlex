@@ -1,7 +1,7 @@
 import { Transaction } from "@prisma/client";
 import { CreateTransactionDto } from "../domain/transaction/dto/createTransactionDto";
 import { TransactionRepository } from "../repositories/TransactionRepository";
-import {UserRepository} from "../repositories/UserRepository";
+import {UserRepository} from "../repositories/user.repository";
 import * as console from "node:console";
 import axios from "axios";
 import {DtoValidator} from "../utils/dto-validator";
