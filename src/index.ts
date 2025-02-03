@@ -4,6 +4,9 @@ import bodyParser from 'body-parser';
 import { connectToDatabase } from './database/databaseConnection';
 import userRouter from './routes/userRoutes';
 import transactionRoutes from "./routes/transactionRoutes";
+import * as dotenv from 'dotenv';
+
+dotenv.config();
 
 const addMiddlewares = (app: Application) => {
   app.use(cors());
