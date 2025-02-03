@@ -84,4 +84,45 @@ const userController = new UserController();
  */
 router.post('/users', userController.createUser.bind(userController));
 
+/**
+ * @swagger
+ * /users:
+ *   get:
+ *     summary: Lista todos os usuários
+ *     tags:
+ *       - User
+ *     description: Retorna uma lista com todos os usuários registrados no banco de dados.
+ *     responses:
+ *       200:
+ *         description: Lista de usuários retornada com sucesso.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   id:
+ *                     type: string
+ *                     example: "0a05d403-cfe4-4593-b93f-f352f6cc0a24"
+ *                   fullName:
+ *                     type: string
+ *                     example: "Luis Felipe"
+ *                   email:
+ *                     type: string
+ *                     example: "luis@email.com"
+ *                   isMerchant:
+ *                     type: boolean
+ *                     example: true
+ *                   document:
+ *                     type: string
+ *                     example: "01864908000106"
+ *                   documentType:
+ *                     type: string
+ *                     example: "CNPJ"
+ *       500:
+ *         description: Erro interno do servidor.
+ */
+router.get('/users', userController.findAll.bind(userController));
+
 export default router;

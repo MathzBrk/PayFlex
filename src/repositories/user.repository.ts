@@ -1,10 +1,10 @@
 import {DocType, Prisma, PrismaClient, User} from "@prisma/client";
-import { IUserRepository } from "./interfaces/IUserRepository";
-import { CreateUserDto } from "../domain/user/dto/CreateUserDto";
+import { UserInterfaceRepository } from "./interfaces/user.interface.repository";
+import { CreateUserDto } from "../domain/user/dto/create-user.dto";
 import prisma from "../database/prismaClient";
-import {UserResponseDto} from "../domain/user/dto/UserResponseDto";
+import {UserResponseDto} from "../domain/user/dto/user-response.dto";
 
-export class UserRepository implements IUserRepository {
+export class UserRepository implements UserInterfaceRepository {
 
     private prisma: PrismaClient = prisma;
 
@@ -18,6 +18,19 @@ export class UserRepository implements IUserRepository {
             }
         });
     };
+
+    findAllUsers = async (): Promise<UserResponseDto[]> => {
+        return this.prisma.user.findMany({
+            select: {
+                id: true,
+                fullName: true,
+                email: true,
+                isMerchant: true,
+                document: true,
+                documentType: true,
+            }
+        })
+    }
 
    create = async (userDto: CreateUserDto, formattedDocument: string, doctype: DocType):Promise<UserResponseDto> => {
     return this.prisma.user.create({

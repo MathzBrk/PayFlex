@@ -30,7 +30,7 @@ export class TransactionController {
             const transactions = await this.service.getAllTransactions();
             res.status(200).json(transactions);
         } catch (error: any){
-            return res.status(400).json({ error: error.message });
+            return res.status(500).json({ error: error.message });
         }
     }
 
@@ -41,7 +41,7 @@ export class TransactionController {
             const transactions = await this.service.getTransactionsBytime(seconds);
             res.status(200).json(transactions);
         } catch (error: any){
-            return res.status(400).json({ error: error.message });
+            return res.status(500).json({ error: error.message });
         }
     }
 
