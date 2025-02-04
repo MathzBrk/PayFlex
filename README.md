@@ -7,9 +7,21 @@ Bem-vindo à API do PayFlex Solutions, uma plataforma de pagamentos simplificada
 A documentação completa da API pode ser acessada em: [Swagger UI](http://localhost:8082/api/v1/docs/)
 
 ## Configuração Inicial
+1. Execute para instalar as dependências.
+```sh
+   npm install
+```
 
-1. Crie um arquivo `.env` na raiz do projeto para configurar as variáveis de ambiente.
+2. Crie um arquivo `.env` na raiz do projeto para configurar as variáveis de ambiente.
    - Use o arquivo `.env.example` como referência para definir o caminho do banco de dados.
+  
+3. Executar as migrations para aplicar a estrutura ao banco de dados com: 
+```sh
+npx prisma migrate dev
+```
+
+
+
 
 ## Dicas
 1. Para a criação de um User, recomendo a utilização de um gerador de CPF ou CNPJ para evitar erros.
