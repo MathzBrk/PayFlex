@@ -120,3 +120,15 @@ Abaixo estão os principais endpoints disponíveis na API:
   - `400 Bad Request`: Dados inválidos enviados para cadastro.
   - `500 Internal Server Error`: Erro interno do servidor.
 
+### 6. Listar Todos os Usuários
+
+- **Endpoint:** `/users`
+- **Método:** `GET`
+- **Descrição:** Retorna uma lista com todos os usuários registrados no banco de dados.
+- **Respostas:**
+  - 200 OK: Lista de usuários retornada com sucesso.
+  - `400 Bad Request`: Dados inválidos enviados para cadastro.
+  - `500 Internal Server Error`: Erro interno do servidor.
+    
+    
+
