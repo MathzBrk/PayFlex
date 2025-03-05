@@ -9,6 +9,8 @@ import setupSwagger from "./config/swagger";
 
 dotenv.config();
 
+//teste commit
+
 const addMiddlewares = (app: Application) => {
   app.use(cors());
   app.use(express.json());
